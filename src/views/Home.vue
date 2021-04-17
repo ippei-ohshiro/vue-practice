@@ -11,5 +11,47 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 
-export default defineComponent({});
+export default defineComponent({
+  setup(prop, context) {
+    /// eslint... 空の関数定義時の警告を抑止
+    const calendar = () => {
+      context.root.$router.push(
+        {
+          name: "calendar",
+          params: { type: { hoge: 123, fuga: "xyz" } }
+        } as {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {}
+      );
+    };
+
+    const profile = () => {
+      context.root.$router.push(
+        "profile",
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {}
+      );
+    };
+
+    const share = () => {
+      context.root.$router.push(
+        "share",
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {}
+      );
+    };
+
+    return {
+      calendar,
+      profile,
+      share
+    };
+  }
+});
 </script>

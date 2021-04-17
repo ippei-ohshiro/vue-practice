@@ -1,11 +1,18 @@
 <template>
-  <div>
-    <h1>カレンダー</h1>
-  </div>
+  <div>カレンダー[{{ type.fuga }}]</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 
-export default defineComponent({});
+export default defineComponent({
+  props: {
+    type: {
+      required: true,
+      validator: (value: string) => {
+        return ["month", "week", "day"].includes(value);
+      }
+    }
+  }
+});
 </script>

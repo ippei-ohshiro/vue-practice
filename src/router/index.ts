@@ -12,7 +12,10 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "home",
-    component: HomeComponent
+    component: HomeComponent,
+    meta: {
+      title: "home"
+    }
   },
   {
     path: "/calendar/:type",
@@ -35,12 +38,24 @@ const routes: Array<RouteConfig> = [
     name: "sign-in",
     component: SignInComponent
   }
+  // {
+  //   path: "*",
+  //   component: NotFoundComponent,
+  // },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.afterEach(to => {
+  if (!to.meta.title) {
+    return;
+  }
+
+  document.title = to.meta.title;
 });
 
 export default router;
