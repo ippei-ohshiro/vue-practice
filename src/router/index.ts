@@ -21,22 +21,34 @@ const routes: Array<RouteConfig> = [
     path: "/calendar/:type",
     name: "calendar",
     component: CalendarComponent,
-    props: true
+    props: true,
+    meta: {
+      title: "calendar"
+    }
   },
   {
     path: "/profile",
     name: "profile",
-    component: ProfileComponent
+    component: ProfileComponent,
+    meta: {
+      title: "profile"
+    }
   },
   {
     path: "/share",
     name: "share",
-    component: ShareComponent
+    component: ShareComponent,
+    meta: {
+      title: "share"
+    }
   },
   {
     path: "/sign-in",
     name: "sign-in",
-    component: SignInComponent
+    component: SignInComponent,
+    meta: {
+      title: "sign-in"
+    }
   }
   // {
   //   path: "*",
