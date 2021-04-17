@@ -1,30 +1,46 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import HomeComponent from "@/views/Home.vue";
+import CalendarComponent from "@/views/Calendar.vue";
+import ProfileComponent from "@/views/Profile.vue";
+import ShareComponent from "@/views/Share.vue";
+import SignInComponent from "@/views/SignIn.vue";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "home",
+    component: HomeComponent
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/calendar/:type",
+    name: "calendar",
+    component: CalendarComponent,
+    props: true
   },
+  {
+    path: "/profile",
+    name: "profile",
+    component: ProfileComponent
+  },
+  {
+    path: "/share",
+    name: "share",
+    component: ShareComponent
+  },
+  {
+    path: "/sign-in",
+    name: "sign-in",
+    component: SignInComponent
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes,
+  routes
 });
 
 export default router;
