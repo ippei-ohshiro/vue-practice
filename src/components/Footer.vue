@@ -16,11 +16,7 @@
         <v-icon large>view_week</v-icon>
       </v-btn>
 
-      <v-btn
-        class="my-auto"
-        height="56"
-        @click="routerPush('/calendear/month')"
-      >
+      <v-btn class="my-auto" height="56" @click="routerPush('/calendar/month')">
         <span>monthly</span>
         <v-icon large>event_note</v-icon>
       </v-btn>
@@ -61,8 +57,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from "@vue/composition-api";
-import { profileMockData } from "@/store/profile";
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  computed
+} from "@vue/composition-api";
+
+// import { profileMockData } from "@/store/profile";
+import { profileStore } from "@/store/profile";
 
 export default defineComponent({
   setup(prop, context) {
@@ -77,7 +80,9 @@ export default defineComponent({
         { title: "共有する", icon: "share", methodName: "share" }
       ],
       //サインインしているユーザー
-      signInUser: profileMockData
+      signInUser: computed(() => {
+        return profileStore.profile;
+      })
     });
     /**
      * メソッド名を指定しコンポーネントのメソッドを呼び出します。
@@ -115,6 +120,7 @@ export default defineComponent({
      * サインアウト
      */
     const signOut = () => {
+      profileStore.profile = null;
       routerPush("/sign-in");
     };
 

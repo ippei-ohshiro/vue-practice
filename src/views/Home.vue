@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>ホーム画面</p>
-    <p><roter-link to="sign-in">サインイン</roter-link></p>
+    <p><router-link to="sign-in">サインイン</router-link></p>
     <p><button @click="calendar">カレンダー</button></p>
     <p><button @click="profile">プロフィール</button></p>
     <p><button @click="share">共有</button></p>
